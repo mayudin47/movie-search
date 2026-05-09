@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+      <title>
+        Movie Search</title>
+      <style>
+        *{margin:0;
+        padding:0;
+        box-sizing:border-box}
+        body{font-family:'Segoe UI',sans-serif;
+        background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+        min-height:100vh;
+        padding:20px}
+        .container{max-width:800px;
+        margin:0 auto}
+        h1{color:white;
+        text-align:center;
+        margin-bottom:30px}
+        .search-box{display:flex;
+        gap:10px;
+        margin-bottom:30px}
+        input{flex:1;
+        padding:12px;
+        border:none;
+        border-radius:8px;
+        font-size:1rem}
+        input:focus{outline:none}
+        button{padding:12px 30px;
+        background:#4ade80;
+        color:white;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+        font-weight:600}
+        button:hover{background:#22c55e}
+        .results{display:grid;
+        grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+        gap:20px}
+        .movie{background:white;
+        border-radius:10px;
+        padding:15px;
+        box-shadow:0 5px 15px rgba(0,0,0,0.2)}
+        .movie h3{color:#333;
+        margin-bottom:10px}
+        .movie p{color:#666;
+        font-size:0.9rem;
+        line-height:1.5}
+        </style>
+      </head>
+    <body>
+      <div class="container">
+        <h1>
+          🎬 Movie Search</h1>
+        <div class="search-box">
+          <input type="text" id="search" placeholder="Search movies...">
+            <button onclick="search()">
+              Search</button>
+            </div>
+          <div class="results" id="results">
+            </div>
+          </div>
+        <script>
+          const movies=[{title:'Inception',year:2010}
+          ,{title:'The Matrix',year:1999}
+          ,{title:'Interstellar',year:2014}
+          ,{title:'Pulp Fiction',year:1994}
+          ];
+          function search(){const query=document.getElementById('search').value.toLowerCase();
+          const results=movies.filter(m=>
+          m.title.toLowerCase().includes(query));
+          document.getElementById('results').innerHTML=results.map(m=>
+          `<div class="movie">
+            <h3>
+              ${m.title}
+              </h3>
+            <p>
+              Year: ${m.year}
+              </p>
+            </div>
+          `).join('');
+          }
+          ;
+          </script>
+        </body>
+      </html>
